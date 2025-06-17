@@ -2,10 +2,14 @@ import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const categories = await prisma.category.findMany({
-    orderBy: { createdAt: 'desc' },
-  });
-  return NextResponse.json(categories);
+  try {
+    const categories = await prisma.category.findMany({
+      orderBy: { createdAt: 'desc' },
+    });
+    return NextResponse.json(categories);
+  } catch (err) {
+    return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 });
+  }
 }
 
 export async function POST(req: Request) {
