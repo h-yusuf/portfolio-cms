@@ -24,29 +24,30 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
 model Category {
   id        String   @id @default(uuid())
-  name     String
+  name      String
   slug      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Experience {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   company   String
   position  String
   startDate DateTime
   endDate   DateTime?
   content   String
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
 }
 
 model Project {
-  id          String   @id @default(uuid())
-  title       String
-  content     String
-  slug        String   @unique
-  Thumbnail   String?
-  createdAt   DateTime @default(now())
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  slug      String   @unique
+  Thumbnail String?
+  createdAt DateTime @default(now())
 }
