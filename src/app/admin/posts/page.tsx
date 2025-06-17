@@ -108,6 +108,22 @@ export default function PostsPage() {
     setPosts(data);
   };
 
+  // categories
+
+  const [categories, setCategories] = useState<{ id: string; name: string }[]>([]);
+
+  const fetchCategories = async () => {
+    const res = await fetch("/api/categories");
+    const data = await res.json();
+    setCategories(data);
+  };
+  useEffect(() => {
+    fetchPosts();
+    fetchCategories();
+  }, []);
+
+  // end categories  
+
   const deletePost = async (id: string) => {
     const result = await Swal.fire({
       title: "Yakin ingin menghapus post ini?",
@@ -303,15 +319,21 @@ export default function PostsPage() {
                 onChange={(e) => setForm({ ...form, slug: e.target.value })}
                 required
               />
-              <input
-                type="text"
+              <select
                 name="category"
-                placeholder="Kategori"
-                className="input input-bordered w-full"
+                className="select select-bordered w-full"
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
                 required
-              />
+              >
+                <option value="" disabled>Pilih kategori</option>
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.name}>
+                    {cat.name}
+                  </option>
+                ))}
+              </select>
+
               <div className="border rounded-md p-4 shadow bg-white space-y-4">
                 {/* Toolbar */}
                 <div className="flex flex-wrap gap-2">
