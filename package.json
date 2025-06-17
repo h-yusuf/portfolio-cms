@@ -10,6 +10,7 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.9.1",
     "@prisma/client": "^6.9.0",
     "@tiptap/extension-blockquote": "^2.14.0",
     "@tiptap/extension-bold": "^2.14.0",
@@ -25,12 +26,14 @@
     "@tiptap/extension-underline": "^2.14.0",
     "@tiptap/react": "^2.14.0",
     "@tiptap/starter-kit": "^2.14.0",
+    "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.2",
     "daisyui": "^5.0.43",
     "dayjs": "^1.11.13",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.516.0",
     "next": "15.3.3",
+    "next-auth": "^4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
